@@ -22,4 +22,6 @@ min,max = st.slider(
     0, 100, (5, 100))
 mask = dataFrame1['可借'] <= max
 mask_dataFrame = dataFrame1[mask]
+count = mask_dataFrame["車數"].count()
+st.write("符合條件的站點數:",count)
 st.dataframe(mask_dataFrame)
