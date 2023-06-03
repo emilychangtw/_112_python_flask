@@ -17,6 +17,9 @@ dataFrame = pd.DataFrame(data=all_data,columns=['sna','tot','sbi','sarea','mday'
 
 dataFrame.columns = ["站點名稱","車數","可借","行政區","時間","地址","可還","狀態"]
 dataFrame1 = dataFrame.set_index("站點名稱")
-mask = dataFrame1['可借'] <= 3
+min,max = st.slider(
+    '請選擇可借的(<=數量)',
+    0, 100, (5, 100))
+mask = dataFrame1['可借'] <= max
 mask_dataFrame = dataFrame1[mask]
 st.dataframe(mask_dataFrame)
